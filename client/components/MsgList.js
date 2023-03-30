@@ -50,7 +50,7 @@ const MsgList = () => {
     }
 
     const doneEdit = () => setEditingId(null)
-
+    
     return (
         <>
         <MsgInput mutate={onCreate}/>

@@ -5,10 +5,10 @@ import MsgInput from "./MsgInput"
 import fetcher from '../fetcher'
 import useInfinteScroll from "../hooks/useInfiniteScroll"
 
-const MsgList = () => {
+const MsgList = ({ smsgs, users }) => {
     const { query } = useRouter()
     const userId = query.userId || query.userid || ''; // userid 대응
-    const [ msgs, setMsgs ] = useState([])
+    const [ msgs, setMsgs ] = useState(smsgs)
     const [ editingId, setEditingId ] = useState(null)
     const [hasNext, setHasNext] = useState(true)
     const fetchMoreEl = useRef(null) //화면에 보이는가 안보이는가로 리스트 추가함
@@ -72,6 +72,7 @@ const MsgList = () => {
             isEditing={editingId === x.id}
             onDelete={() => onDelete(x.id)}
             myId={userId}
+            user={users[x.userId]}
             />
             )}
         </ul>

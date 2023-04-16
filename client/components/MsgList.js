@@ -11,7 +11,7 @@ const MsgList = () => {
     const [ msgs, setMsgs ] = useState([])
     const [ editingId, setEditingId ] = useState(null)
     const [hasNext, setHasNext] = useState(true)
-    const fetchMoreEl = useRef(null)
+    const fetchMoreEl = useRef(null) //화면에 보이는가 안보이는가로 리스트 추가함
     const intersecting = useInfinteScroll(fetchMoreEl)
 
     const onCreate = async text => {

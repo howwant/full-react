@@ -13,7 +13,8 @@ import fetcher from '../fetcher'
 //     text: `${50 - i} mock tex t`
 // }))
 const MsgList = () => {
-    const { query: {userId = ''} } = useRouter()
+    const { query } = useRouter()
+    const userId = query.userId || query.userid || ''; // userid 대응
     const [ msgs, setMsgs ] = useState([])
     const [ editingId, setEditingId ] = useState(null)
 
@@ -67,8 +68,8 @@ const MsgList = () => {
     },[])
 
     return (
-        <>
-        <MsgInput mutate={onCreate}/>
+        <>{userId &&
+        <MsgInput mutate={onCreate}/>}
         <ul className="messages">
         { msgs.map(x => 
         <MsgItem 
